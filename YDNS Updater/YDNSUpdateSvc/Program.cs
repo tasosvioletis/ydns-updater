@@ -25,7 +25,7 @@ namespace YDNSUpdateSvc
             Config = INIFile.Read(AppPath + "Config.ini");
 
             WebClient wc = new WebClient();
-            if (Config["Proxy"]["User"].Length > 0)
+            if (Config["Proxy"]["Enabled"].ToLowerInvariant().Trim() == "true" || Config["Proxy"]["Enabled"].ToLowerInvariant().Trim() == "1")
             {
                 wc.UseDefaultCredentials = false;
                 wc.Proxy.Credentials = new NetworkCredential(Config["Proxy"]["User"], Config["Proxy"]["Pass"], Config["Proxy"]["Domain"]);

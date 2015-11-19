@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 14 for Windows Desktop
+# Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YDNSUpdateSvc", "YDNSUpdateSvc\YDNSUpdateSvc.csproj", "{913719F4-931A-4831-BE7B-EBF6E3E53861}"
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qube.IO", "..\Qube\Qube.IO\Qube.IO.csproj", "{62F9E832-C0AB-48C7-A977-8543C92DF6B0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qube.Console", "..\Qube\Qube.Console\Qube.Console.csproj", "{C2261BC0-1DB5-405F-870A-066B5E077C6C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{C2648A79-62F9-4BCA-9412-76F11D65BC86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,5 +38,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{62F9E832-C0AB-48C7-A977-8543C92DF6B0} = {C2648A79-62F9-4BCA-9412-76F11D65BC86}
+		{C2261BC0-1DB5-405F-870A-066B5E077C6C} = {C2648A79-62F9-4BCA-9412-76F11D65BC86}
 	EndGlobalSection
 EndGlobal
