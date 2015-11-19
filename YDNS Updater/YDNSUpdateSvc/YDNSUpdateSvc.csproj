@@ -47,6 +47,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="Config.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Qube\Qube.Console\Qube.Console.csproj">
+      <Project>{c2261bc0-1db5-405f-870a-066b5e077c6c}</Project>
+      <Name>Qube.Console</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Qube\Qube.IO\Qube.IO.csproj">
+      <Project>{62f9e832-c0ab-48c7-a977-8543c92df6b0}</Project>
+      <Name>Qube.IO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

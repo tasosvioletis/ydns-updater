@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YDNSUpdateSvc", "YDNSUpdate
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YDNSUpdateGUI", "YDNSUpdateGUI\YDNSUpdateGUI.csproj", "{5AB08ECB-793C-4CB3-980E-AB60EEA37BC7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qube.IO", "..\Qube\Qube.IO\Qube.IO.csproj", "{62F9E832-C0AB-48C7-A977-8543C92DF6B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qube.Console", "..\Qube\Qube.Console\Qube.Console.csproj", "{C2261BC0-1DB5-405F-870A-066B5E077C6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{5AB08ECB-793C-4CB3-980E-AB60EEA37BC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AB08ECB-793C-4CB3-980E-AB60EEA37BC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AB08ECB-793C-4CB3-980E-AB60EEA37BC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62F9E832-C0AB-48C7-A977-8543C92DF6B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62F9E832-C0AB-48C7-A977-8543C92DF6B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62F9E832-C0AB-48C7-A977-8543C92DF6B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62F9E832-C0AB-48C7-A977-8543C92DF6B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2261BC0-1DB5-405F-870A-066B5E077C6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2261BC0-1DB5-405F-870A-066B5E077C6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2261BC0-1DB5-405F-870A-066B5E077C6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2261BC0-1DB5-405F-870A-066B5E077C6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
