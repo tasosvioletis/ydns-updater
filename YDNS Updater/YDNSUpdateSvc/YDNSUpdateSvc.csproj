@@ -48,7 +48,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <Content Include="Config.ini">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -59,6 +59,10 @@
     <ProjectReference Include="..\..\Qube\Qube.IO\Qube.IO.csproj">
       <Project>{62f9e832-c0ab-48c7-a977-8543c92df6b0}</Project>
       <Name>Qube.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YDNSUpdateGUI\YDNSUpdateGUI.csproj">
+      <Project>{5ab08ecb-793c-4cb3-980e-ab60eea37bc7}</Project>
+      <Name>YDNSUpdateGUI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -39,8 +39,6 @@ namespace YDNSUpdateSvc
 
             foreach (string host in Config["Hosts"].Keys)
                 Console.WriteLine(wc.DownloadString(string.Format("https://ydns.io/api/v1/update/?host={0}&ip={1}", host, myIP)));
-
-            Console.ReadKey();
         }
     }
 }
