@@ -1,52 +1,54 @@
-﻿using Qube.ConsoleApp;
-using Qube.IO;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace YDNSUpdateGUI
-{
-    class Program : ConsoleApplication
-    {
-        public static Dictionary<string, Dictionary<string, string>> Config;
+namespace YDNSUpdateGUI {
 
-        [STAThread]
-        public static void Main(string[] args)
-        {
-            var app = new Program();
-            app.Run(args);
-        }
+   static class Program {
 
-        public override void Run(string[] args)
-        {
-            base.Run(args);
+      public static Dictionary<string,string> Config;
 
-            ReloadConfig();            
+      /// <summary>
+      /// The main entry point for the application.
+      /// </summary>
+      [STAThread]
+      static void Main() {
+         ReloadConfig();
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
-        }
+         Application.EnableVisualStyles();
+         Application.SetCompatibleTextRenderingDefault(false);
+         var frm = new frmMain();
+         Application.Run(frm);
 
-        public static void ReloadConfig()
-        {
-            Config = INIFile.Read(AppPath + "Config.ini");
-        }
+         SaveConfig(frm);
+      }
 
-        public static void SaveConfig(frmMain frm)
-        {
-            Config["API"]["User"] = frm.txAPIUser.Text;
-            Config["API"]["Key"] = frm.txAPIKey.Text;
-            Config["Proxy"]["User"] = frm.txProxyUser.Text;
-            Config["Proxy"]["Pass"] = frm.txProxyPass.Text;
-            Config["Proxy"]["Domain"] = frm.txProxyDomain.Text;
-            Config["Proxy"]["Enabled"] = frm.cbProxyEnabled.Checked ? "1" : "0";
-            Config["Hosts"] = new Dictionary<string, string>();
-            foreach (string host in frm.lbHosts.Items)
-                Config["Hosts"][host] = "";
-            INIFile.Save(Config, AppPath + "Config.ini");
-        }
-    }
+
+      public static void ReloadConfig() {
+         Config = new Dictionary<string, string>();
+         Config["APIUser"] = ConfigurationManager.AppSettings["APIUser"];
+         Config["APIKey"] = ConfigurationManager.AppSettings["APIKey"];
+         Config["ProxyUser"] = ConfigurationManager.AppSettings["ProxyUser"];
+         Config["ProxyPass"] = ConfigurationManager.AppSettings["ProxyPass"];
+         Config["ProxyDomain"] = ConfigurationManager.AppSettings["ProxyDomain"];
+         Config["ProxyEnabled"] = ConfigurationManager.AppSettings["ProxyEnabled"];
+         Config["Hosts"] = ConfigurationManager.AppSettings["Hosts"];
+         Config["LastUpdate"] = ConfigurationManager.AppSettings["LastUpdate"];
+      }
+
+      public static void SaveConfig(frmMain frm) {
+         ConfigurationManager.AppSettings["APIUser"] = frm.txAPIUser.Text;
+         ConfigurationManager.AppSettings["APIKey"] = frm.txAPIKey.Text;
+         ConfigurationManager.AppSettings["ProxyUser"] = frm.txProxyUser.Text;
+         ConfigurationManager.AppSettings["ProxyPass"] = frm.txProxyPass.Text;
+         ConfigurationManager.AppSettings["ProxyDomain"] = frm.txProxyDomain.Text;
+         ConfigurationManager.AppSettings["ProxyEnabled"] = frm.cbProxyEnabled.Checked ? "1" : "0";
+         ConfigurationManager.AppSettings["Hosts"] = frm.txtHosts.Text;
+      }
+
+   }
+
 }

@@ -8,59 +8,37 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace YDNSUpdateGUI
-{
-    public partial class frmMain : Form
-    {
-        public frmMain()
-        {
-            InitializeComponent();
-        }
+namespace YDNSUpdateGUI {
+   
+   public partial class frmMain : Form {
 
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            txAPIUser.Text = Program.Config["API"]["User"];
-            txAPIKey.Text = Program.Config["API"]["Key"];
-            cbProxyEnabled.Checked = Program.Config["Proxy"]["Enabled"].ToLowerInvariant().Trim() == "true" || Program.Config["Proxy"]["Enabled"].ToLowerInvariant().Trim() == "1";
-            txProxyUser.Text = Program.Config["Proxy"]["User"];
-            txProxyPass.Text = Program.Config["Proxy"]["Pass"];
-            txProxyDomain.Text = Program.Config["Proxy"]["Domain"];
-            foreach (string host in Program.Config["Hosts"].Keys)
-                lbHosts.Items.Add(host);
-        }
+      public frmMain() {
+         InitializeComponent();
+      }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+      private void frmMain_Load(object sender, EventArgs e) {
+         txAPIUser.Text = Program.Config["APIUser"];
+         txAPIKey.Text = Program.Config["APIKey"];
+         cbProxyEnabled.Checked = Program.Config["ProxyEnabled"].ToLowerInvariant().Trim() == "true" || Program.Config["ProxyEnabled"].ToLowerInvariant().Trim() == "1";
+         txProxyUser.Text = Program.Config["ProxyUser"];
+         txProxyPass.Text = Program.Config["ProxyPass"];
+         txProxyDomain.Text = Program.Config["ProxyDomain"];
+         txtHosts.Text = Program.Config["Hosts"];
+      }
 
-        private void btnOk_Click(object sender, EventArgs e)
-        {
-            Program.SaveConfig(this);
-            Close();
-        }
+      private void btnCancel_Click(object sender, EventArgs e) {
+         Close();
+      }
 
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            string host = "";
-            InputDialog.Show(ref host);
-            if (!string.IsNullOrEmpty(host))
-                if (lbHosts.Items.Cast<string>().Where(x => x.ToLowerInvariant().Trim() == host.ToLowerInvariant().Trim()).SingleOrDefault() == null)
-                    lbHosts.Items.Add(host);
-                else
-                    MessageBox.Show("The host already exists");
-        }
+      private void btnOk_Click(object sender, EventArgs e) {
+         Program.SaveConfig(this);
+         Close();
+      }
 
-        private void btnDel_Click(object sender, EventArgs e)
-        {
-            for (int i = lbHosts.SelectedItems.Count - 1; i >= 0; i--)
-                lbHosts.Items.Remove(lbHosts.SelectedItems[i]);
-        }
+      private void btnApply_Click(object sender, EventArgs e) {
+         Program.SaveConfig(this);
+         MessageBox.Show("Settings saved");
+      }
 
-        private void btnApply_Click(object sender, EventArgs e)
-        {
-            Program.SaveConfig(this);
-            MessageBox.Show("Settings saved");
-        }
-    }
+   }
 }

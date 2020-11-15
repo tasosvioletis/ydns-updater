@@ -30,26 +30,27 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.txAPIUser = new System.Windows.Forms.TextBox();
-            this.txAPIKey = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnOk = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txAPIKey = new System.Windows.Forms.TextBox();
+            this.txAPIUser = new System.Windows.Forms.TextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txProxyDomain = new System.Windows.Forms.TextBox();
+            this.cbProxyEnabled = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txProxyPass = new System.Windows.Forms.TextBox();
             this.txProxyUser = new System.Windows.Forms.TextBox();
-            this.cbProxyEnabled = new System.Windows.Forms.CheckBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txProxyDomain = new System.Windows.Forms.TextBox();
-            this.lbHosts = new System.Windows.Forms.ListBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDel = new System.Windows.Forms.Button();
+            this.btnOk = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
+            this.txtHosts = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtLastUpdate = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -82,6 +83,38 @@
             this.tabPage1.Text = "Authentication";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(15, 43);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 20);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "API Key";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(15, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 20);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "API Username";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txAPIKey
+            // 
+            this.txAPIKey.Location = new System.Drawing.Point(100, 44);
+            this.txAPIKey.Name = "txAPIKey";
+            this.txAPIKey.Size = new System.Drawing.Size(247, 20);
+            this.txAPIKey.TabIndex = 1;
+            // 
+            // txAPIUser
+            // 
+            this.txAPIUser.Location = new System.Drawing.Point(100, 18);
+            this.txAPIUser.Name = "txAPIUser";
+            this.txAPIUser.Size = new System.Drawing.Size(247, 20);
+            this.txAPIUser.TabIndex = 0;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.label5);
@@ -99,71 +132,31 @@
             this.tabPage2.Text = "Proxy";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // label5
             // 
-            this.tabPage3.Controls.Add(this.btnDel);
-            this.tabPage3.Controls.Add(this.btnAdd);
-            this.tabPage3.Controls.Add(this.label6);
-            this.tabPage3.Controls.Add(this.lbHosts);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(364, 161);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Hosts";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.label5.Location = new System.Drawing.Point(16, 96);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 20);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Domain";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txAPIUser
+            // txProxyDomain
             // 
-            this.txAPIUser.Location = new System.Drawing.Point(100, 18);
-            this.txAPIUser.Name = "txAPIUser";
-            this.txAPIUser.Size = new System.Drawing.Size(247, 20);
-            this.txAPIUser.TabIndex = 0;
+            this.txProxyDomain.Location = new System.Drawing.Point(101, 97);
+            this.txProxyDomain.Name = "txProxyDomain";
+            this.txProxyDomain.Size = new System.Drawing.Size(247, 20);
+            this.txProxyDomain.TabIndex = 10;
             // 
-            // txAPIKey
+            // cbProxyEnabled
             // 
-            this.txAPIKey.Location = new System.Drawing.Point(100, 44);
-            this.txAPIKey.Name = "txAPIKey";
-            this.txAPIKey.Size = new System.Drawing.Size(247, 20);
-            this.txAPIKey.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(15, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "API Username";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(15, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 20);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "API Key";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btnOk
-            // 
-            this.btnOk.Location = new System.Drawing.Point(146, 205);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 23);
-            this.btnOk.TabIndex = 1;
-            this.btnOk.Text = "&Ok";
-            this.btnOk.UseVisualStyleBackColor = true;
-            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(227, 205);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "&Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.cbProxyEnabled.AutoSize = true;
+            this.cbProxyEnabled.Location = new System.Drawing.Point(15, 15);
+            this.cbProxyEnabled.Name = "cbProxyEnabled";
+            this.cbProxyEnabled.Size = new System.Drawing.Size(65, 17);
+            this.cbProxyEnabled.TabIndex = 9;
+            this.cbProxyEnabled.Text = "Enabled";
+            this.cbProxyEnabled.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -198,68 +191,49 @@
             this.txProxyUser.Size = new System.Drawing.Size(247, 20);
             this.txProxyUser.TabIndex = 4;
             // 
-            // cbProxyEnabled
+            // tabPage3
             // 
-            this.cbProxyEnabled.AutoSize = true;
-            this.cbProxyEnabled.Location = new System.Drawing.Point(15, 15);
-            this.cbProxyEnabled.Name = "cbProxyEnabled";
-            this.cbProxyEnabled.Size = new System.Drawing.Size(65, 17);
-            this.cbProxyEnabled.TabIndex = 9;
-            this.cbProxyEnabled.Text = "Enabled";
-            this.cbProxyEnabled.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.Location = new System.Drawing.Point(16, 96);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 20);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Domain";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txProxyDomain
-            // 
-            this.txProxyDomain.Location = new System.Drawing.Point(101, 97);
-            this.txProxyDomain.Name = "txProxyDomain";
-            this.txProxyDomain.Size = new System.Drawing.Size(247, 20);
-            this.txProxyDomain.TabIndex = 10;
-            // 
-            // lbHosts
-            // 
-            this.lbHosts.FormattingEnabled = true;
-            this.lbHosts.Location = new System.Drawing.Point(11, 28);
-            this.lbHosts.Name = "lbHosts";
-            this.lbHosts.Size = new System.Drawing.Size(312, 121);
-            this.lbHosts.TabIndex = 0;
+            this.tabPage3.Controls.Add(this.txtLastUpdate);
+            this.tabPage3.Controls.Add(this.label8);
+            this.tabPage3.Controls.Add(this.label7);
+            this.tabPage3.Controls.Add(this.txtHosts);
+            this.tabPage3.Controls.Add(this.label6);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(364, 161);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Hosts";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(8, 12);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(139, 13);
+            this.label6.Size = new System.Drawing.Size(134, 13);
             this.label6.TabIndex = 1;
-            this.label6.Text = "Hosts to update with this IP:";
+            this.label6.Text = "Host to update with this IP:";
             // 
-            // btnAdd
+            // btnOk
             // 
-            this.btnAdd.Location = new System.Drawing.Point(330, 28);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(27, 23);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "+";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnOk.Location = new System.Drawing.Point(146, 205);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(75, 23);
+            this.btnOk.TabIndex = 1;
+            this.btnOk.Text = "&Ok";
+            this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
-            // btnDel
+            // btnCancel
             // 
-            this.btnDel.Location = new System.Drawing.Point(330, 57);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(27, 23);
-            this.btnDel.TabIndex = 3;
-            this.btnDel.Text = "-";
-            this.btnDel.UseVisualStyleBackColor = true;
-            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(227, 205);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 2;
+            this.btnCancel.Text = "&Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnApply
             // 
@@ -270,6 +244,40 @@
             this.btnApply.Text = "&Apply";
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
+            // 
+            // txtHosts
+            // 
+            this.txtHosts.Location = new System.Drawing.Point(11, 29);
+            this.txtHosts.Multiline = true;
+            this.txtHosts.Name = "txtHosts";
+            this.txtHosts.Size = new System.Drawing.Size(338, 47);
+            this.txtHosts.TabIndex = 2;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 79);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(267, 13);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "multiple host names may applied separated with comma";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 122);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(66, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Last update:";
+            // 
+            // txtLastUpdate
+            // 
+            this.txtLastUpdate.Location = new System.Drawing.Point(70, 119);
+            this.txtLastUpdate.Name = "txtLastUpdate";
+            this.txtLastUpdate.ReadOnly = true;
+            this.txtLastUpdate.Size = new System.Drawing.Size(279, 20);
+            this.txtLastUpdate.TabIndex = 11;
             // 
             // frmMain
             // 
@@ -313,8 +321,6 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnDel;
-        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnApply;
         public System.Windows.Forms.TextBox txAPIKey;
@@ -323,7 +329,10 @@
         public System.Windows.Forms.CheckBox cbProxyEnabled;
         public System.Windows.Forms.TextBox txProxyPass;
         public System.Windows.Forms.TextBox txProxyUser;
-        public System.Windows.Forms.ListBox lbHosts;
-    }
+      private System.Windows.Forms.Label label7;
+      public System.Windows.Forms.TextBox txtLastUpdate;
+      private System.Windows.Forms.Label label8;
+      public System.Windows.Forms.TextBox txtHosts;
+   }
 }
 
