@@ -3,28 +3,20 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 
-namespace YDNSUpdateGUI {
+namespace YDNSUpdater {
 
    public partial class frmMain : Form {
 
-      public YDnsConfiguration Config;
+      public ServiceConfiguration Config;
 
       public frmMain() {
-         this.Config = YDnsConfiguration.Load();
+         this.Config = ServiceConfiguration.Load();
          InitializeComponent();
       }
 
       private void frmMain_Load(object sender, EventArgs e) {
-         txAPIUser.Text = this.Config.APIUser;
-         txAPIKey.Text = this.Config.APIKey;
-         cbProxyEnabled.Checked = this.Config.ProxyEnabled;
-         txProxyUser.Text = this.Config.ProxyUser;
-         txProxyPass.Text = this.Config.ProxyPass;
-         txProxyDomain.Text = this.Config.ProxyDomain;
-         txtHosts.Text = this.Config.Hosts;
          this.txtCurrentIP.Text = this.GetPublicIP();
-
-         this.yDnsConfigurationBindingSource.DataSource = this.Config;
+         this.yDnsConfigurationBindingSource.DataSource = this.Config;  // assign binding object
       }
 
       private void btnCancel_Click(object sender, EventArgs e) {
@@ -32,12 +24,12 @@ namespace YDNSUpdateGUI {
       }
 
       private void btnOk_Click(object sender, EventArgs e) {
-         YDnsConfiguration.Save(Config);
+         ServiceConfiguration.Save(Config);
          Close();
       }
 
       private void btnApply_Click(object sender, EventArgs e) {
-         YDnsConfiguration.Save(Config);
+         ServiceConfiguration.Save(Config);
          MessageBox.Show("Settings saved");
       }
 

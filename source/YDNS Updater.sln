@@ -3,14 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YDNSUpdateSvc", "YDNSUpdateSvc\YDNSUpdateSvc.csproj", "{913719F4-931A-4831-BE7B-EBF6E3E53861}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YDNSUpdateGUI", "YDNSUpdateGUI\YDNSUpdateGUI.csproj", "{5AB08ECB-793C-4CB3-980E-AB60EEA37BC7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YDNSUpdaterUI", "YDNSUpdaterUI\YDNSUpdaterUI.csproj", "{5AB08ECB-793C-4CB3-980E-AB60EEA37BC7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B59CFFC4-8B67-43CE-BEB5-D7ED125F3B4C}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YDNSUpdaterService", "YDNSUpdaterService\YDNSUpdaterService.csproj", "{F7187195-A052-4D50-ADD6-787F6E9CE344}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YDNSUpdater", "YDNSUpdater\YDNSUpdater.csproj", "{35E51D04-90B6-4D63-A29F-CF5F4A67074E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,14 +20,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{913719F4-931A-4831-BE7B-EBF6E3E53861}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{913719F4-931A-4831-BE7B-EBF6E3E53861}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{913719F4-931A-4831-BE7B-EBF6E3E53861}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{913719F4-931A-4831-BE7B-EBF6E3E53861}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5AB08ECB-793C-4CB3-980E-AB60EEA37BC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5AB08ECB-793C-4CB3-980E-AB60EEA37BC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AB08ECB-793C-4CB3-980E-AB60EEA37BC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AB08ECB-793C-4CB3-980E-AB60EEA37BC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7187195-A052-4D50-ADD6-787F6E9CE344}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7187195-A052-4D50-ADD6-787F6E9CE344}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7187195-A052-4D50-ADD6-787F6E9CE344}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7187195-A052-4D50-ADD6-787F6E9CE344}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35E51D04-90B6-4D63-A29F-CF5F4A67074E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35E51D04-90B6-4D63-A29F-CF5F4A67074E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35E51D04-90B6-4D63-A29F-CF5F4A67074E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35E51D04-90B6-4D63-A29F-CF5F4A67074E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

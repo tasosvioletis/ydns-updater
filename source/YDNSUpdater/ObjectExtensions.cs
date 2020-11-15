@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Security.Cryptography;
 
-namespace YDNSUpdateGUI {
+namespace YDNSUpdater.Utilities {
 
    public static class ObjectExtensions {
 
@@ -28,7 +28,7 @@ namespace YDNSUpdateGUI {
       /// <param name="obj"></param>
       /// <returns></returns>
       public static Int32 AsInt32(this object obj) {
-         if (!obj.IsNull()) {
+         if (!obj.IsNullOrEmpty()) {
             return Convert.ToInt32(obj);
          }
          else {
@@ -169,7 +169,7 @@ namespace YDNSUpdateGUI {
       /// <param name="obj"></param>
       /// <returns></returns>
       public static bool AsBool(this object obj) {
-         if (!obj.IsNull()) {
+         if (!obj.IsNullOrEmpty()) {
             if (obj.AsText().IsNumeric()) {
                return Convert.ToBoolean(Convert.ToInt32(obj));
             }
@@ -269,7 +269,7 @@ namespace YDNSUpdateGUI {
             return DateTime.MinValue;
          }
 
-         if (!obj.IsNull()) {
+         if (!obj.IsNullOrEmpty()) {
             return DateTime.ParseExact((string)obj, formatList, new CultureInfo("en-US"), DateTimeStyles.None);
          }
          else {

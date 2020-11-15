@@ -1,4 +1,4 @@
-﻿namespace YDNSUpdateGUI
+﻿namespace YDNSUpdater
 {
     partial class frmMain
     {
@@ -313,7 +313,7 @@
             // 
             // yDnsConfigurationBindingSource
             // 
-            this.yDnsConfigurationBindingSource.DataSource = typeof(YDNSUpdateGUI.YDnsConfiguration);
+            this.yDnsConfigurationBindingSource.DataSource = typeof(ServiceConfiguration);
             // 
             // frmMain
             // 
