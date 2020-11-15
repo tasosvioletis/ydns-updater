@@ -16,14 +16,9 @@ namespace YDNSUpdateGUI {
       /// </summary>
       [STAThread]
       static void Main() {
-         ReloadConfig();
-
          Application.EnableVisualStyles();
          Application.SetCompatibleTextRenderingDefault(false);
-         var frm = new frmMain();
-         Application.Run(frm);
-
-         SaveConfig(frm);
+         Application.Run(new frmMain());
       }
 
 

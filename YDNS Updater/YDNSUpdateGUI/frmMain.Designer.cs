@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,18 +44,22 @@
             this.txProxyPass = new System.Windows.Forms.TextBox();
             this.txProxyUser = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtLastUpdate = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtHosts = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
-            this.txtHosts = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtLastUpdate = new System.Windows.Forms.TextBox();
+            this.txtCurrentIP = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.yDnsConfigurationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.yDnsConfigurationBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -103,6 +108,7 @@
             // 
             // txAPIKey
             // 
+            this.txAPIKey.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.yDnsConfigurationBindingSource, "APIKey", true));
             this.txAPIKey.Location = new System.Drawing.Point(100, 44);
             this.txAPIKey.Name = "txAPIKey";
             this.txAPIKey.Size = new System.Drawing.Size(247, 20);
@@ -110,6 +116,7 @@
             // 
             // txAPIUser
             // 
+            this.txAPIUser.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.yDnsConfigurationBindingSource, "APIUser", true));
             this.txAPIUser.Location = new System.Drawing.Point(100, 18);
             this.txAPIUser.Name = "txAPIUser";
             this.txAPIUser.Size = new System.Drawing.Size(247, 20);
@@ -143,6 +150,7 @@
             // 
             // txProxyDomain
             // 
+            this.txProxyDomain.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.yDnsConfigurationBindingSource, "ProxyDomain", true));
             this.txProxyDomain.Location = new System.Drawing.Point(101, 97);
             this.txProxyDomain.Name = "txProxyDomain";
             this.txProxyDomain.Size = new System.Drawing.Size(247, 20);
@@ -151,6 +159,7 @@
             // cbProxyEnabled
             // 
             this.cbProxyEnabled.AutoSize = true;
+            this.cbProxyEnabled.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.yDnsConfigurationBindingSource, "ProxyEnabled", true));
             this.cbProxyEnabled.Location = new System.Drawing.Point(15, 15);
             this.cbProxyEnabled.Name = "cbProxyEnabled";
             this.cbProxyEnabled.Size = new System.Drawing.Size(65, 17);
@@ -178,6 +187,7 @@
             // 
             // txProxyPass
             // 
+            this.txProxyPass.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.yDnsConfigurationBindingSource, "ProxyPass", true));
             this.txProxyPass.Location = new System.Drawing.Point(101, 71);
             this.txProxyPass.Name = "txProxyPass";
             this.txProxyPass.Size = new System.Drawing.Size(247, 20);
@@ -186,6 +196,7 @@
             // 
             // txProxyUser
             // 
+            this.txProxyUser.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.yDnsConfigurationBindingSource, "ProxyUser", true));
             this.txProxyUser.Location = new System.Drawing.Point(101, 45);
             this.txProxyUser.Name = "txProxyUser";
             this.txProxyUser.Size = new System.Drawing.Size(247, 20);
@@ -193,6 +204,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.txtCurrentIP);
+            this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Controls.Add(this.txtLastUpdate);
             this.tabPage3.Controls.Add(this.label8);
             this.tabPage3.Controls.Add(this.label7);
@@ -204,6 +217,42 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Hosts";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // txtLastUpdate
+            // 
+            this.txtLastUpdate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.yDnsConfigurationBindingSource, "LastUpdate", true));
+            this.txtLastUpdate.Location = new System.Drawing.Point(70, 119);
+            this.txtLastUpdate.Name = "txtLastUpdate";
+            this.txtLastUpdate.ReadOnly = true;
+            this.txtLastUpdate.Size = new System.Drawing.Size(279, 20);
+            this.txtLastUpdate.TabIndex = 11;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 122);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(66, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Last update:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 79);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(267, 13);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "multiple host names may applied separated with comma";
+            // 
+            // txtHosts
+            // 
+            this.txtHosts.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.yDnsConfigurationBindingSource, "Hosts", true));
+            this.txtHosts.Location = new System.Drawing.Point(11, 29);
+            this.txtHosts.Multiline = true;
+            this.txtHosts.Name = "txtHosts";
+            this.txtHosts.Size = new System.Drawing.Size(338, 47);
+            this.txtHosts.TabIndex = 2;
             // 
             // label6
             // 
@@ -245,39 +294,26 @@
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
-            // txtHosts
+            // txtCurrentIP
             // 
-            this.txtHosts.Location = new System.Drawing.Point(11, 29);
-            this.txtHosts.Multiline = true;
-            this.txtHosts.Name = "txtHosts";
-            this.txtHosts.Size = new System.Drawing.Size(338, 47);
-            this.txtHosts.TabIndex = 2;
+            this.txtCurrentIP.Location = new System.Drawing.Point(70, 95);
+            this.txtCurrentIP.Name = "txtCurrentIP";
+            this.txtCurrentIP.ReadOnly = true;
+            this.txtCurrentIP.Size = new System.Drawing.Size(279, 20);
+            this.txtCurrentIP.TabIndex = 13;
             // 
-            // label7
+            // label9
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 79);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(267, 13);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "multiple host names may applied separated with comma";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(8, 98);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(57, 13);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "Current IP:";
             // 
-            // label8
+            // yDnsConfigurationBindingSource
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 122);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(66, 13);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Last update:";
-            // 
-            // txtLastUpdate
-            // 
-            this.txtLastUpdate.Location = new System.Drawing.Point(70, 119);
-            this.txtLastUpdate.Name = "txtLastUpdate";
-            this.txtLastUpdate.ReadOnly = true;
-            this.txtLastUpdate.Size = new System.Drawing.Size(279, 20);
-            this.txtLastUpdate.TabIndex = 11;
+            this.yDnsConfigurationBindingSource.DataSource = typeof(YDNSUpdateGUI.YDnsConfiguration);
             // 
             // frmMain
             // 
@@ -295,7 +331,7 @@
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "YDNS Updater Service GUI";
+            this.Text = "YDNS Updater";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -304,6 +340,7 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.yDnsConfigurationBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -333,6 +370,9 @@
       public System.Windows.Forms.TextBox txtLastUpdate;
       private System.Windows.Forms.Label label8;
       public System.Windows.Forms.TextBox txtHosts;
+      public System.Windows.Forms.TextBox txtCurrentIP;
+      private System.Windows.Forms.Label label9;
+      private System.Windows.Forms.BindingSource yDnsConfigurationBindingSource;
    }
 }
 
