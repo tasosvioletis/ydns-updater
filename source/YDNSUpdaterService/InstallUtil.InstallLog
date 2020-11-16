@@ -5,3 +5,17 @@ See the contents of the log file for the D:\Tasos\Projects\YDNSUpdater\source.gi
 The file is located at D:\Tasos\Projects\YDNSUpdater\source.git\source\YDNSUpdateGUI\bin\Debug\YDNSUpdaterService.InstallLog.
 
 The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Tasos\Projects\YDNSUpdater\source.git\source\YDNSUpdaterUI\bin\Debug\YDNSUpdaterService.exe assembly's progress.
+The file is located at D:\Tasos\Projects\YDNSUpdater\source.git\source\YDNSUpdaterUI\bin\Debug\YDNSUpdaterService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Tasos\Projects\YDNSUpdater\source.git\source\YDNSUpdaterUI\bin\Debug\YDNSUpdaterService.exe assembly's progress.
+The file is located at D:\Tasos\Projects\YDNSUpdater\source.git\source\YDNSUpdaterUI\bin\Debug\YDNSUpdaterService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.

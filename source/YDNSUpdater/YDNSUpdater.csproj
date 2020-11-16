@@ -45,6 +45,7 @@
     <Compile Include="ServiceConfiguration.cs" />
     <Compile Include="DNSUpdater.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Helper.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.Configuration.ConfigurationManager">

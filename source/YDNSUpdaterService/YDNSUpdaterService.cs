@@ -7,14 +7,15 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace YDNSUpdater.Service {
 
    public partial class YDNSUpdaterService : ServiceBase {
 
-      private ServiceConfiguration Config { get; set; }
+      private Timer ServiceTimer;
 
-      private DNSUpdater Updater { get; set; }
+      private DNSUpdater YDNSService { get; set; }
 
       public YDNSUpdaterService() {
          InitializeComponent();
@@ -22,18 +23,29 @@ namespace YDNSUpdater.Service {
 
       protected override void OnStart(string[] args) {
          Debugger.Launch();
-         this.Config = ServiceConfiguration.Load();
-         this.timer.Interval = this.Config.CheckInterval * 60 * 1000; //minutes to milliseconds
-         this.timer.Enabled = true;
+         this.YDNSService = new DNSUpdater();
+         
+         ServiceTimer = new System.Timers.Timer(10000); 
+
+         // Hook up the Elapsed event for the timer.
+         ServiceTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+         ServiceTimer.Interval = this.YDNSService.Config.CheckInterval * 60 * 1000; //minutes to milliseconds
+         ServiceTimer.Interval = 1 * 60 * 1000; //minutes to milliseconds
+         ServiceTimer.Enabled = true;
       }
 
       protected override void OnStop() {
-         this.timer.Enabled = false;
+         ServiceTimer.Enabled = false;
+         ServiceTimer.Dispose();
       }
 
-      private void timer_Tick(object sender, EventArgs e) {
-         this.Updater.Update();
+      private void OnTimedEvent(object source, ElapsedEventArgs e) {
+         if (!this.YDNSService.IsUpdated()) {
+            this.YDNSService.Update();
+         }
+         Console.WriteLine("The Elapsed event was raised at {0}", e.SignalTime);
       }
+
 
    }
 }

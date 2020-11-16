@@ -48,5 +48,12 @@ namespace YDNSUpdater {
 
          return direction;
       }
+
+      private void btnUpdateNow_Click(object sender, EventArgs e) {
+         var service = new DNSUpdater();
+         service.Update();
+         this.yDnsConfigurationBindingSource.DataSource = ServiceConfiguration.Load(); //reload;
+      }
+
    }
 }

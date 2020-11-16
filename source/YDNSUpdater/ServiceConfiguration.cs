@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Specialized;
 using System.Configuration;
+using System.IO;
 using YDNSUpdater.Utilities;
 
 namespace YDNSUpdater {
 
    public class ServiceConfiguration {
 
-      private int _CheckInterval = 5;
+      private int _CheckInterval = 60;  //default value
 
       public string APIUser { get; set; }
 
@@ -17,6 +18,11 @@ namespace YDNSUpdater {
       public string ProxyDomain { get; set; }
       public bool ProxyEnabled { get; set; }
       public string Hosts { get; set; }
+
+      /// <summary>
+      /// Last known public IP
+      /// </summary>
+      public string LastIP { get; set; }
 
       /// <summary>
       /// public ip interval checking (in minutes)
@@ -39,17 +45,21 @@ namespace YDNSUpdater {
 
       private readonly int MinimumInterval = 5;   //5 minutes
 
+      public static string ConfigFileName = "YDNSUpdaterUI.exe.Config";
 
-      public static ServiceConfiguration Load(string configFile ="") {
-         //YDNSUpdaterUI.exe.config
+      public static Configuration OpenConfig() {
+         var configFilePath = Path.Combine(Helper.GetAppPath(), ConfigFileName);
+         var appConfig = ConfigurationManager.OpenExeConfiguration(configFilePath);
+         var configFileMap = new ExeConfigurationFileMap();
+         configFileMap.ExeConfigFilename = configFilePath;
+         var mappedConfig = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None, true);
+         return mappedConfig;
+      }
 
+      public static ServiceConfiguration Load() {
+         var appConfig = OpenConfig();
+         var settings = appConfig.AppSettings.Settings;
          var config = new ServiceConfiguration();
-
-         configFile = @"D:\Tasos\Projects\YDNSUpdater\source.git\source\YDNSUpdaterUI\bin\Debug\YDNSUpdaterUI.exe.config";
-
-         var conf = ConfigurationManager.OpenExeConfiguration(configFile);
-         var settings = conf.AppSettings.Settings;
-
          config.APIUser = GetValue(settings, nameof(APIUser));
          config.APIKey = GetValue(settings, nameof(APIKey));
          config.ProxyUser = GetValue(settings, nameof(ProxyUser));
@@ -59,13 +69,14 @@ namespace YDNSUpdater {
          config.Hosts = GetValue(settings, nameof(Hosts));
          config.CheckInterval = GetValue(settings, nameof(CheckInterval)).AsInt();
          config.LastUpdate = GetValue(settings, nameof(LastUpdate)).AsDate();
+         config.LastIP = GetValue(settings, nameof(LastIP));
          return config;
       }
 
-      public static void Save(ServiceConfiguration  config) {
+      public static void Save(ServiceConfiguration config) {
          try {
-            var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            var settings = configFile.AppSettings.Settings;
+            var appConfig = OpenConfig();
+            var settings = appConfig.AppSettings.Settings;
 
             SetValue(settings, nameof(APIUser), config.APIUser);
             SetValue(settings, nameof(APIKey), config.APIKey);
@@ -74,10 +85,12 @@ namespace YDNSUpdater {
             SetValue(settings, nameof(ProxyDomain), config.ProxyDomain);
             SetValue(settings, nameof(ProxyEnabled), config.ProxyEnabled.AsText());
             SetValue(settings, nameof(Hosts), config.Hosts);
-            SetValue(settings, nameof(Hosts), config.CheckInterval.AsText());
+            SetValue(settings, nameof(CheckInterval), config.CheckInterval.AsText());
+            SetValue(settings, nameof(LastIP), config.LastIP.AsText());
+            SetValue(settings, nameof(LastUpdate), config.LastUpdate.ToString("yyyy-MM-dd HH:mm:ss"));
 
-            configFile.Save(ConfigurationSaveMode.Modified);
-            ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
+            appConfig.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection(appConfig.AppSettings.SectionInformation.Name);
          } catch (ConfigurationErrorsException) {
             Console.WriteLine("Error writing app settings");
          }

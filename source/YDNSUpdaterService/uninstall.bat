@@ -1,1 +1,1 @@
-..\..\utilities\InstallUtil.exe /u ..\YDNSUpdateGUI\bin\Debug\YDNSUpdaterService.exe
+..\..\utilities\InstallUtil.exe /u ..\YDNSUpdaterUI\bin\Debug\YDNSUpdaterService.exe
