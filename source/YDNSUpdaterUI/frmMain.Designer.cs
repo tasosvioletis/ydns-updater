@@ -57,11 +57,16 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
             this.btnUpdateNow = new System.Windows.Forms.Button();
+            this.btnService = new System.Windows.Forms.Button();
+            this.lblService = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.serviceStateBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.yDnsConfigurationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.serviceStateBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yDnsConfigurationBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -207,6 +212,9 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btnService);
+            this.tabPage3.Controls.Add(this.lblService);
+            this.tabPage3.Controls.Add(this.label12);
             this.tabPage3.Controls.Add(this.btnUpdateNow);
             this.tabPage3.Controls.Add(this.txtLastKnownIP);
             this.tabPage3.Controls.Add(this.label10);
@@ -226,8 +234,8 @@
             // 
             // txtLastKnownIP
             // 
-            this.txtLastKnownIP.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.yDnsConfigurationBindingSource, "LastIP", true));
-            this.txtLastKnownIP.Location = new System.Drawing.Point(92, 132);
+            this.txtLastKnownIP.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.serviceStateBindingSource, "LastIP", true));
+            this.txtLastKnownIP.Location = new System.Drawing.Point(92, 102);
             this.txtLastKnownIP.Name = "txtLastKnownIP";
             this.txtLastKnownIP.Size = new System.Drawing.Size(257, 20);
             this.txtLastKnownIP.TabIndex = 15;
@@ -236,7 +244,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(8, 135);
+            this.label10.Location = new System.Drawing.Point(8, 105);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(78, 13);
             this.label10.TabIndex = 14;
@@ -244,7 +252,8 @@
             // 
             // txtCurrentIP
             // 
-            this.txtCurrentIP.Location = new System.Drawing.Point(92, 106);
+            this.txtCurrentIP.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.serviceStateBindingSource, "CurrentIP", true));
+            this.txtCurrentIP.Location = new System.Drawing.Point(92, 76);
             this.txtCurrentIP.Name = "txtCurrentIP";
             this.txtCurrentIP.Size = new System.Drawing.Size(257, 20);
             this.txtCurrentIP.TabIndex = 13;
@@ -253,7 +262,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(8, 109);
+            this.label9.Location = new System.Drawing.Point(8, 79);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(57, 13);
             this.label9.TabIndex = 12;
@@ -261,8 +270,8 @@
             // 
             // txtLastUpdate
             // 
-            this.txtLastUpdate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.yDnsConfigurationBindingSource, "LastUpdate", true));
-            this.txtLastUpdate.Location = new System.Drawing.Point(92, 158);
+            this.txtLastUpdate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.serviceStateBindingSource, "LastUpdate", true));
+            this.txtLastUpdate.Location = new System.Drawing.Point(92, 128);
             this.txtLastUpdate.Name = "txtLastUpdate";
             this.txtLastUpdate.Size = new System.Drawing.Size(137, 20);
             this.txtLastUpdate.TabIndex = 11;
@@ -271,7 +280,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 161);
+            this.label8.Location = new System.Drawing.Point(8, 131);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(66, 13);
             this.label8.TabIndex = 4;
@@ -280,11 +289,12 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 79);
+            this.label7.Location = new System.Drawing.Point(8, 63);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(267, 13);
             this.label7.TabIndex = 3;
             this.label7.Text = "multiple host names may applied separated with comma";
+            this.label7.Visible = false;
             // 
             // txtHosts
             // 
@@ -292,7 +302,7 @@
             this.txtHosts.Location = new System.Drawing.Point(11, 29);
             this.txtHosts.Multiline = true;
             this.txtHosts.Name = "txtHosts";
-            this.txtHosts.Size = new System.Drawing.Size(338, 47);
+            this.txtHosts.Size = new System.Drawing.Size(338, 31);
             this.txtHosts.TabIndex = 2;
             // 
             // label6
@@ -300,9 +310,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(8, 12);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(134, 13);
+            this.label6.Size = new System.Drawing.Size(32, 13);
             this.label6.TabIndex = 1;
-            this.label6.Text = "Host to update with this IP:";
+            this.label6.Text = "Host:";
             // 
             // btnOk
             // 
@@ -338,13 +348,47 @@
             // btnUpdateNow
             // 
             this.btnUpdateNow.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnUpdateNow.Location = new System.Drawing.Point(274, 156);
+            this.btnUpdateNow.Location = new System.Drawing.Point(274, 126);
             this.btnUpdateNow.Name = "btnUpdateNow";
             this.btnUpdateNow.Size = new System.Drawing.Size(75, 23);
             this.btnUpdateNow.TabIndex = 16;
             this.btnUpdateNow.Text = "Update now";
             this.btnUpdateNow.UseVisualStyleBackColor = true;
             this.btnUpdateNow.Click += new System.EventHandler(this.btnUpdateNow_Click);
+            // 
+            // btnService
+            // 
+            this.btnService.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.serviceStateBindingSource, "IsServiceRunningButtonText", true));
+            this.btnService.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnService.Location = new System.Drawing.Point(274, 155);
+            this.btnService.Name = "btnService";
+            this.btnService.Size = new System.Drawing.Size(75, 23);
+            this.btnService.TabIndex = 19;
+            this.btnService.Text = "Start";
+            this.btnService.UseVisualStyleBackColor = true;
+            this.btnService.Click += new System.EventHandler(this.btnService_Click);
+            // 
+            // lblService
+            // 
+            this.lblService.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.serviceStateBindingSource, "IsServiceRunningText", true));
+            this.lblService.Location = new System.Drawing.Point(92, 157);
+            this.lblService.Name = "lblService";
+            this.lblService.Size = new System.Drawing.Size(137, 20);
+            this.lblService.TabIndex = 18;
+            this.lblService.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(8, 160);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(46, 13);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "Service:";
+            // 
+            // serviceStateBindingSource
+            // 
+            this.serviceStateBindingSource.DataSource = typeof(YDNSUpdater.ServiceState);
             // 
             // yDnsConfigurationBindingSource
             // 
@@ -375,6 +419,7 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.serviceStateBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.yDnsConfigurationBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -411,6 +456,10 @@
       public System.Windows.Forms.Label txtLastKnownIP;
       private System.Windows.Forms.Label label10;
       private System.Windows.Forms.Button btnUpdateNow;
+      private System.Windows.Forms.Button btnService;
+      public System.Windows.Forms.Label lblService;
+      private System.Windows.Forms.Label label12;
+      private System.Windows.Forms.BindingSource serviceStateBindingSource;
    }
 }
 

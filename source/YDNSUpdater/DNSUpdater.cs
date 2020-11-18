@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,9 +11,11 @@ namespace YDNSUpdater {
    public class DNSUpdater {
 
       private WebClient _HttpClient;
+           
 
       public DNSUpdater() {
          this.Config = ServiceConfiguration.Load();
+         this.State = ServiceState.Load(this.Config);
          this.CreateHttpClient();
       }
 
@@ -26,9 +29,10 @@ namespace YDNSUpdater {
       }
 
       public ServiceConfiguration Config { get; set; }
+      public ServiceState State { get; set; }
 
       public string CurrentIP {
-         get { 
+         get {
             return _HttpClient.DownloadString("http://myexternalip.com/raw");
          }
       }
@@ -38,11 +42,10 @@ namespace YDNSUpdater {
       /// </summary>
       /// <returns></returns>
       public bool IsUpdated() {
-         return this.Config.LastIP == this.CurrentIP;
+         return this.State.LastIP == this.CurrentIP;
       }
 
       public void Update() {
-
          string auth = Config.APIUser + ":" + Config.APIKey;
          auth = Convert.ToBase64String(Encoding.ASCII.GetBytes(auth));
          _HttpClient.Headers.Add(HttpRequestHeader.Authorization, "Basic " + auth);
@@ -52,9 +55,9 @@ namespace YDNSUpdater {
          var result = _HttpClient.DownloadString(string.Format("https://ydns.io/api/v1/update/?host={0}&ip={1}", host, this.CurrentIP));
          //TODO : logging
 
-         this.Config.LastIP = this.CurrentIP;
-         this.Config.LastUpdate = DateTime.Now;
-         ServiceConfiguration.Save(this.Config);
+         this.State.LastIP = this.CurrentIP;
+         this.State.LastUpdate = DateTime.Now;
+         ServiceState.Save(this.State);
       }
 
    }

@@ -20,11 +20,6 @@ namespace YDNSUpdater {
       public string Hosts { get; set; }
 
       /// <summary>
-      /// Last known public IP
-      /// </summary>
-      public string LastIP { get; set; }
-
-      /// <summary>
       /// public ip interval checking (in minutes)
       /// </summary>
       public int CheckInterval {
@@ -41,53 +36,45 @@ namespace YDNSUpdater {
       }
             
 
-      public DateTime LastUpdate { get; set; }
-
       private readonly int MinimumInterval = 5;   //5 minutes
 
-      public static string ConfigFileName = "YDNSUpdaterUI.exe.Config";
-
-      public static Configuration OpenConfig() {
-         var configFilePath = Path.Combine(Helper.GetAppPath(), ConfigFileName);
-         var appConfig = ConfigurationManager.OpenExeConfiguration(configFilePath);
-         var configFileMap = new ExeConfigurationFileMap();
-         configFileMap.ExeConfigFilename = configFilePath;
-         var mappedConfig = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None, true);
-         return mappedConfig;
+      public static string ConfigFilePath {
+         get {
+            return Path.Combine(Helper.GetAppPath(), Constant.ConfigFileName);
+         }
       }
 
+
       public static ServiceConfiguration Load() {
-         var appConfig = OpenConfig();
+         var configFilePath = Path.Combine(Helper.GetAppPath(), Constant.ConfigFileName);
+         var appConfig = Helper.OpenConfig(configFilePath);
          var settings = appConfig.AppSettings.Settings;
          var config = new ServiceConfiguration();
-         config.APIUser = GetValue(settings, nameof(APIUser));
-         config.APIKey = GetValue(settings, nameof(APIKey));
-         config.ProxyUser = GetValue(settings, nameof(ProxyUser));
-         config.ProxyPass = GetValue(settings, nameof(ProxyPass));
-         config.ProxyDomain = GetValue(settings, nameof(ProxyDomain));
-         config.ProxyEnabled = GetValue(settings, nameof(ProxyEnabled)).AsBool();
-         config.Hosts = GetValue(settings, nameof(Hosts));
-         config.CheckInterval = GetValue(settings, nameof(CheckInterval)).AsInt();
-         config.LastUpdate = GetValue(settings, nameof(LastUpdate)).AsDate();
-         config.LastIP = GetValue(settings, nameof(LastIP));
+         config.APIUser = settings.GetValue( nameof(APIUser));
+         config.APIKey = settings.GetValue(nameof(APIKey));
+         config.ProxyUser = settings.GetValue(nameof(ProxyUser));
+         config.ProxyPass = settings.GetValue(nameof(ProxyPass));
+         config.ProxyDomain = settings.GetValue(nameof(ProxyDomain));
+         config.ProxyEnabled = settings.GetValue(nameof(ProxyEnabled)).AsBool();
+         config.Hosts = settings.GetValue(nameof(Hosts));
+         config.CheckInterval = settings.GetValue(nameof(CheckInterval)).AsInt();
          return config;
       }
 
       public static void Save(ServiceConfiguration config) {
          try {
-            var appConfig = OpenConfig();
+            var configFilePath = Path.Combine(Helper.GetAppPath(), Constant.ConfigFileName);
+            var appConfig = Helper.OpenConfig(configFilePath);
             var settings = appConfig.AppSettings.Settings;
 
-            SetValue(settings, nameof(APIUser), config.APIUser);
-            SetValue(settings, nameof(APIKey), config.APIKey);
-            SetValue(settings, nameof(ProxyUser), config.ProxyUser);
-            SetValue(settings, nameof(ProxyPass), config.ProxyPass);
-            SetValue(settings, nameof(ProxyDomain), config.ProxyDomain);
-            SetValue(settings, nameof(ProxyEnabled), config.ProxyEnabled.AsText());
-            SetValue(settings, nameof(Hosts), config.Hosts);
-            SetValue(settings, nameof(CheckInterval), config.CheckInterval.AsText());
-            SetValue(settings, nameof(LastIP), config.LastIP.AsText());
-            SetValue(settings, nameof(LastUpdate), config.LastUpdate.ToString("yyyy-MM-dd HH:mm:ss"));
+            settings.SetValue( nameof(APIUser), config.APIUser);
+            settings.SetValue(nameof(APIKey), config.APIKey);
+            settings.SetValue(nameof(ProxyUser), config.ProxyUser);
+            settings.SetValue(nameof(ProxyPass), config.ProxyPass);
+            settings.SetValue(nameof(ProxyDomain), config.ProxyDomain);
+            settings.SetValue(nameof(ProxyEnabled), config.ProxyEnabled.AsText());
+            settings.SetValue(nameof(Hosts), config.Hosts);
+            settings.SetValue(nameof(CheckInterval), config.CheckInterval.AsText());
 
             appConfig.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection(appConfig.AppSettings.SectionInformation.Name);
@@ -97,23 +84,6 @@ namespace YDNSUpdater {
 
       }
 
-      private static string GetValue(KeyValueConfigurationCollection settings, string key) {
-         if (settings[key] == null) {
-            return string.Empty;
-         }
-         else {
-            return settings[key].Value;
-         }
-      }
-
-      private static void SetValue(KeyValueConfigurationCollection settings, string key, string value) {
-         if (settings[key] == null) {
-            settings.Add(key, value);
-         }
-         else {
-            settings[key].Value = value;
-         }
-      }
 
    }
 
