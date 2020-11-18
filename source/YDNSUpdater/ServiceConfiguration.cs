@@ -19,6 +19,8 @@ namespace YDNSUpdater {
       public bool ProxyEnabled { get; set; }
       public string Hosts { get; set; }
 
+      public bool DebugMode { get; set; } = false;
+
       /// <summary>
       /// public ip interval checking (in minutes)
       /// </summary>
@@ -58,6 +60,7 @@ namespace YDNSUpdater {
          config.ProxyEnabled = settings.GetValue(nameof(ProxyEnabled)).AsBool();
          config.Hosts = settings.GetValue(nameof(Hosts));
          config.CheckInterval = settings.GetValue(nameof(CheckInterval)).AsInt();
+         config.DebugMode = settings.GetValue(nameof(DebugMode)).AsBool();
          return config;
       }
 

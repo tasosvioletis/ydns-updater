@@ -22,15 +22,21 @@ namespace YDNSUpdater.Service {
       }
 
       protected override void OnStart(string[] args) {
-         Debugger.Launch();
          this.YDNSService = new DNSUpdater();
-         
-         ServiceTimer = new System.Timers.Timer(10000); 
+
+         if (this.YDNSService.Config.DebugMode) {
+            Debugger.Launch();
+         }
 
          // Hook up the Elapsed event for the timer.
+         ServiceTimer = new System.Timers.Timer(10000); 
          ServiceTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
          ServiceTimer.Interval = this.YDNSService.Config.CheckInterval * 60 * 1000; //minutes to milliseconds
-         ServiceTimer.Interval = 1 * 60 * 1000; //minutes to milliseconds
+
+         if (this.YDNSService.Config.DebugMode) {
+            ServiceTimer.Interval = 1 * 60 * 1000; // 1 minute
+         }
+
          ServiceTimer.Enabled = true;
       }
 
